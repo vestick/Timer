@@ -1,11 +1,9 @@
 package org.example;
 
-import org.example.models.sounds.Sound;
-
-import java.io.File;
+import org.example.utils.AppStarter;
 
 public class App {
     public static void main(String[] args) {
-
+        AppStarter.start();
     }
 }
