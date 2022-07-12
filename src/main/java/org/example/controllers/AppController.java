@@ -2,6 +2,7 @@ package org.example.controllers;
 
 import org.example.models.AppModel;
 import org.example.utils.Constants;
+import org.example.utils.validators.ChoiceValidator;
 import org.example.views.AppView;
 
 public class AppController {
@@ -14,9 +15,9 @@ public class AppController {
     }
 
     public void runApp() {
-        //TODO Need choice validator
+        //TODO Need normal choice validator
 
-        selectChoice(view.inputChoice());
+        selectChoice(ChoiceValidator.validate(view.inputChoice()));
     }
 
     private void selectChoice(int choice) {

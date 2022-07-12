@@ -11,9 +11,9 @@ public class DuringTimeModel {
     }
 
     public void setDuringTime(String untilTime) {
-        view.getOutput("The wait will take "+getDuringMinutes(untilTime)+" minutes...");
+        view.getOutput("The wait will take " + getDuringMinutes(untilTime) + " minutes...");
         try {
-            Thread.sleep(getDuringMinutes(untilTime)* 60000L);
+            Thread.sleep(getDuringMinutes(untilTime) * 60000L);
             //TODO Add crash reporter txt
 
         } catch (InterruptedException ex) {
@@ -22,7 +22,7 @@ public class DuringTimeModel {
         Sound.playSound("src/main/resources/sounds/retro.wav").join();
     }
 
-    private int getDuringMinutes(String duringTime){
-        return  (Integer.parseInt(duringTime.substring(0, 2)) * 60) + (Integer.parseInt(duringTime.substring(3, 5)));
+    private int getDuringMinutes(String duringTime) {
+        return (Integer.parseInt(duringTime.substring(0, 2)) * 60) + (Integer.parseInt(duringTime.substring(3, 5)));
     }
 }
