@@ -19,7 +19,7 @@ public class DuringTimeModel {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        Sound.playSound("src/main/resources/sounds/retro.wav").join();
+        Sound.playSound("src/main/resources/sounds/tickTock.wav").join();
     }
 
     private int getDuringMinutes(String duringTime) {
