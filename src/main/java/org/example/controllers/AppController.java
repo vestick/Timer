@@ -15,20 +15,18 @@ public class AppController {
     }
 
     public void runApp() {
-        //TODO Need normal choice validator
-
         selectChoice(ChoiceValidator.validate(view.inputChoice()));
     }
 
     private void selectChoice(int choice) {
         switch (choice) {
-            case 1 : {
+            case 1: {
                 model.setUntilTime();
             }
-            case 2 : {
+            case 2: {
                 model.setDuringTime();
             }
-            case 0 : {
+            case 0: {
                 String output = Constants.EXIT_MESSAGE;
                 view.getOutput(output);
             }

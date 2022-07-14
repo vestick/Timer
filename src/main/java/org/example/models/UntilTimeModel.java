@@ -2,6 +2,8 @@ package org.example.models;
 
 import org.example.utils.AppStarter;
 import org.example.utils.Sound;
+import org.example.utils.exceptions.TimeFormatException;
+import org.example.utils.validators.TimeValidator;
 import org.example.views.UntilTimeView;
 
 import java.time.LocalDateTime;
@@ -30,6 +32,12 @@ public class UntilTimeModel {
     }
 
     private int getUntilMinutes(String untilTime) {
+        try {
+            TimeValidator.validate(untilTime);
+        } catch (TimeFormatException e) {
+            System.out.println(e.getMessage());
+            AppStarter.start();
+        }
         return (Integer.parseInt(untilTime.substring(0, 2)) * 60) + (Integer.parseInt(untilTime.substring(3, 5)));
     }
 

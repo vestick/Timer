@@ -8,7 +8,6 @@ public class UntilTimeView implements Printable<String> {
 
     public String doInputUntilTime() {
         System.out.println("Enter the time until which the timer will wait (Like 00:22): ");
-        //TODO time validator
 
         return scanner.nextLine();
     }
