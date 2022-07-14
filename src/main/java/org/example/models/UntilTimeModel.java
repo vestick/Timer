@@ -25,7 +25,6 @@ public class UntilTimeModel {
         }
         try {
             Thread.sleep((getUntilMinutes(untilTime) - getNowMinutes()) * 60000L);
-            //TODO Add crash reporter txt
 
         } catch (IllegalArgumentException ex) {
             System.out.println("You must enter a time later than the present");
@@ -39,7 +38,7 @@ public class UntilTimeModel {
 
     private int getUntilMinutes(String untilTime) {
         try {
-            TimeValidator.validate(untilTime);
+            TimeValidator.validateUntilTime(untilTime);
         } catch (TimeFormatException e) {
             System.out.println(e.getMessage());
             AppStarter.start();

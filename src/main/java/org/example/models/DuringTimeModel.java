@@ -1,6 +1,9 @@
 package org.example.models;
 
+import org.example.utils.AppStarter;
 import org.example.utils.Sound;
+import org.example.utils.exceptions.TimeFormatException;
+import org.example.utils.validators.TimeValidator;
 import org.example.views.DuringTimeView;
 
 public class DuringTimeModel {
@@ -10,11 +13,16 @@ public class DuringTimeModel {
         this.view = view;
     }
 
-    public void setDuringTime(String untilTime) {
-        view.getOutput("The wait will take " + getDuringMinutes(untilTime) + " minutes...");
+    public void setDuringTime(String duringTime) {
         try {
-            Thread.sleep(getDuringMinutes(untilTime) * 60000L);
-            //TODO Add crash reporter txt
+            view.getOutput("The wait will take " + getDuringMinutes(duringTime) + " minutes...");
+        } catch (NumberFormatException e) {
+            System.out.println("Symbols cannot be present in time");
+            AppStarter.start();
+        }
+
+        try {
+            Thread.sleep(getDuringMinutes(duringTime) * 60000L);
 
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -23,6 +31,12 @@ public class DuringTimeModel {
     }
 
     private int getDuringMinutes(String duringTime) {
+        try {
+            TimeValidator.validateDuringTime(duringTime);
+        } catch (TimeFormatException e) {
+            System.out.println(e.getMessage());
+            AppStarter.start();
+        }
         return (Integer.parseInt(duringTime.substring(0, 2)) * 60) + (Integer.parseInt(duringTime.substring(3, 5)));
     }
 }

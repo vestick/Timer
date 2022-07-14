@@ -3,8 +3,14 @@ package org.example.utils.validators;
 import org.example.utils.exceptions.TimeFormatException;
 
 public class TimeValidator {
-    public static void validate(String time) {
+    public static void validateUntilTime(String time) {
         if (time.length() != 5 || !checkMiddleChar(time) || !checkLimitTime(time)) {
+            throw new TimeFormatException("Not correct format time");
+        }
+    }
+
+    public static void validateDuringTime(String time) {
+        if (time.length() != 5 || !checkMiddleChar(time)) {
             throw new TimeFormatException("Not correct format time");
         }
     }
