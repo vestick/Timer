@@ -17,7 +17,12 @@ public class UntilTimeModel {
     }
 
     public void setUntilTime(String untilTime) {
-        view.getOutput("The wait will take " + (getUntilMinutes(untilTime) - getNowMinutes()) + " minutes...");
+        try {
+            view.getOutput("The wait will take " + (getUntilMinutes(untilTime) - getNowMinutes()) + " minutes...");
+        } catch (NumberFormatException e) {
+            System.out.println("Symbols cannot be present in time");
+            AppStarter.start();
+        }
         try {
             Thread.sleep((getUntilMinutes(untilTime) - getNowMinutes()) * 60000L);
             //TODO Add crash reporter txt
@@ -25,6 +30,7 @@ public class UntilTimeModel {
         } catch (IllegalArgumentException ex) {
             System.out.println("You must enter a time later than the present");
             AppStarter.start();
+
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
